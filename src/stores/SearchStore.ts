@@ -14,13 +14,10 @@ export const useSearchStore = defineStore("searchStore", () => {
 
   const getResult = async (search: string) => {
     loader.value = true;
-    const result = await fetch(
-      `https://nominatim.openstreetmap.org/?q=${search}&format=json`
-    );
+    const result = await fetch(`https://nominatim.openstreetmap.org/?q=${search}&format=json`);
     const data: TGetResult = await result.json();
     searchResult.value = data;
     loader.value = false;
-    console.log(data);
   };
 
   return {
